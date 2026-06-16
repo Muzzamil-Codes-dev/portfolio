@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colours stored as raw "R G B" channels so Tailwind opacity modifiers work. */
+:root {
+  --bg: 246 240 231; /* #F6F0E7 */
+  --surface: 255 249 240; /* #FFF9F0 */
+  --surface-hover: 242 230 215; /* #F2E6D7 — subtle card/nav hover */
+  --fg: 43 33 24; /* #2B2118 */
+  --muted: 122 106 88; /* #7A6A58 */
+  --accent: 91 70 54; /* #5B4636 */
+  --accent-soft: 234 220 201; /* #EADCC9 — active-nav pill bg */
+  --line: 229 214 195; /* #E5D6C3 */
+}
+
+.dark {
+  --bg: 23 19 15; /* #17130F */
+  --surface: 33 26 20; /* #211A14 */
+  --surface-hover: 43 33 24; /* #2B2118 */
+  --fg: 247 239 228; /* #F7EFE4 */
+  --muted: 184 168 149; /* #B8A895 */
+  --accent: 214 185 140; /* #D6B98C */
+  --accent-soft: 58 42 31; /* #3A2A1F */
+  --line: 58 46 36; /* #3A2E24 */
+}
+
+html {
+  scroll-behavior: smooth;
+  /* clear the 4rem sticky navbar so headings aren't covered on anchor jump */
+  scroll-padding-top: 5rem;
+}
+
+/* sections offset so the sticky navbar never covers their headings */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* Respect users who prefer reduced motion: no smooth scroll, no transitions. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+  transition: background-color 0.45s ease, color 0.45s ease;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgb(var(--accent));
+  color: rgb(var(--bg));
+}
+
+/* Thin, subtle scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--line));
+  border-radius: 9999px;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-6 sm:px-8;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface shadow-soft transition-all duration-200 ease-out;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-accent/30 hover:shadow-lift;
+  }
+  /* subtle background shift on hover (raw CSS so it never depends on @apply
+     resolving the config colour) */
+  .card-hover:hover {
+    background-color: rgb(var(--surface-hover));
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-bg px-3 py-1 text-xs font-medium text-muted transition-colors;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-bg shadow-soft hover:opacity-95 hover:shadow-lift;
+  }
+
+  .btn-ghost {
+    @apply btn border border-line bg-surface text-fg hover:border-accent hover:text-accent;
+  }
+
+  .section-label {
+    @apply mb-3 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-accent;
+  }
+
+  /* small horizontal accent line beside each section label */
+  .section-label::before {
+    content: "";
+    @apply h-[2px] w-6 rounded-full bg-accent;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold tracking-tight sm:text-4xl;
+  }
+
+  .nav-pill {
+    @apply rounded-full border border-transparent px-3.5 py-1.5 text-sm text-muted transition-all duration-200;
+  }
+
+  .nav-pill-mobile {
+    @apply block rounded-lg px-3 py-2.5 text-sm text-muted transition-colors;
+  }
+}
+
+/* Nav hover + active (via aria-current) in raw CSS so they always resolve the
+   theme colours without depending on utility generation. */
+.nav-pill:not([aria-current="true"]):hover {
+  color: rgb(var(--fg));
+  background-color: rgb(var(--surface-hover));
+  transform: translateY(-1px);
+}
+.nav-pill[aria-current="true"] {
+  color: rgb(var(--fg));
+  background-color: rgb(var(--accent-soft));
+  border-color: rgb(var(--line));
+  font-weight: 600;
+}
+.nav-pill-mobile:not([aria-current="true"]):hover {
+  color: rgb(var(--fg));
+  background-color: rgb(var(--surface-hover));
+}
+.nav-pill-mobile[aria-current="true"] {
+  color: rgb(var(--fg));
+  background-color: rgb(var(--accent-soft));
+  font-weight: 600;
+}
