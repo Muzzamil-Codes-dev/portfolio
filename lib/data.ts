@@ -30,8 +30,7 @@ export const socials = {
   // Gmail-as-handler, Apple Mail, etc.).
   email: "Muzzamil755@gmail.com",
   github: "https://github.com/Muzzamil-Codes-dev",
-  // NOTE: confirm this is your real LinkedIn profile URL before sharing.
-  linkedin: "https://www.linkedin.com/in/muzzamil-rasully",
+  linkedin: "https://www.linkedin.com/in/muzzamil-rasully-0989191a0",
 };
 
 /* ------------------------------------------------------------------ */
