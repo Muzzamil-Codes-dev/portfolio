@@ -28,7 +28,7 @@ export const socials = {
   // Shown publicly to recruiters; the Contact button + tiles + footer all use a
   // mailto: link so a click opens the visitor's default mail app (Outlook,
   // Gmail-as-handler, Apple Mail, etc.).
-  email: "Rasully.m1@gmail.com",
+  email: "Muzzamil755@gmail.com",
   github: "https://github.com/Muzzamil-Codes-dev",
   // NOTE: confirm this is your real LinkedIn profile URL before sharing.
   linkedin: "https://www.linkedin.com/in/muzzamil-rasully",
