@@ -49,7 +49,7 @@ for (const removed of ["QuickScan", "FocusCard", "MoreProjects", "Skills", "Tech
 }
 
 // Private / client projects must never carry a GitHub link.
-for (const slug of ["contract-rag", "sola-document-processing"]) {
+for (const slug of ["contract-rag"]) {
   for (const file of ["lib/data.ts", "lib/caseStudies.ts"]) {
     const text = readFileSync(join(root, file), "utf8");
     const start = text.indexOf(`slug: "${slug}"`);

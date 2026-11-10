@@ -6,7 +6,7 @@ export type CaseStudy = {
   slug: string;
   title: string;
   tagline: string;
-  badge?: "Private repo" | "Client work";
+  badge?: "Private repo" | "Client work" | "Coursework";
   github?: string;
   problem: string;
   architecture: string[];
@@ -90,34 +90,41 @@ const studies: CaseStudy[] = [
     stack: ["Python", "LangGraph", "FastAPI", "Pydantic", "SQLite", "React", "Vite", "pytest", "uv", "OpenAI API", "Claude API (private)", "E2B (private)", "OpenTelemetry (private)", "Docker (private)"],
   },
   {
-    slug: "sola-document-processing",
-    title: "Document processing at Sola",
-    tagline: "Schema-validated LLM extraction for an operations team handling 1,200 documents a month.",
-    badge: "Client work",
+    slug: "nq-retrieval-rag",
+    title: "Retrieval & RAG on Natural Questions",
+    tagline:
+      "A question-answering pipeline built one measured step at a time, from a TF-IDF baseline to hybrid retrieval with cross-encoder reranking.",
+    badge: "Coursework",
+    github: "https://github.com/Muzzamil-Codes-dev/nlp-retrieval-rag-coursework",
     problem:
-      "A six-person operations team was processing about 1,200 documents a month by hand, at around 15 minutes each. They needed structured data out of those documents without trusting an LLM blindly.",
+      "Retrieval quality sets the ceiling for any RAG system: if the right passage isn't retrieved, the generator can't answer. This university project (ECS665U, Queen Mary) measures each retrieval improvement on its own against the Natural Questions dataset before plugging the best setup into a full RAG pipeline.",
     architecture: [
-      "A Python and FastAPI application with PostgreSQL, retrieval and LLM extraction against a schema.",
-      "Document ingestion runs on a background queue, separate from user-facing requests, so failed jobs can retry without blocking anyone.",
-      "Outputs that fail schema validation go to a human review queue instead of downstream systems.",
-      "Failures are tracked through deployment monitoring. The app runs on a Linux server on AWS.",
+      "Baseline: TF-IDF over unigrams and bigrams with stop-word removal and L2-normalised vectors.",
+      "Dense retrieval with the all-MiniLM-L6-v2 bi-encoder, compared against the larger all-mpnet-base-v2.",
+      "Hybrid retrieval combining sparse and dense rankings with reciprocal rank fusion and a tuned weighted score fusion.",
+      "A cross-encoder reranks the top candidates, which buys precision at a manageable cost.",
+      "The best setup feeds a FAISS IndexFlatIP vector store and Flan-T5-small answer generation, evaluated with Exact Match and token F1.",
+      "Embeddings, indexes and query expansions are cached to disk, so a re-run skips the expensive encoding steps.",
     ],
     decisions: [
       {
-        title: "Validation before trust",
-        body: "Every extraction is checked against the schema, and anything that fails goes to a person. The team only receives output that passed.",
+        title: "Tune on dev, submit test once",
+        body: "Every improvement was tuned on the development set, and the held-out test set was only used for the final submission.",
       },
       {
-        title: "Queue between ingestion and users",
-        body: "Slow or failing documents no longer hold up the people using the app.",
+        title: "Report the experiment that failed",
+        body: "LLM query expansion with Flan-T5 didn't help, and the write-up reports that result instead of leaving it out.",
+      },
+      {
+        title: "Error analysis before more tuning",
+        body: "Failure cases got a qualitative review as part of the final evaluation, alongside the metric scores.",
       },
     ],
     results: [
-      { label: "Time per document", value: "15 → 6 min", context: "average, a 60% reduction" },
-      { label: "Volume", value: "1,200 / month", context: "documents handled by the six-person team" },
-      { label: "Time saved", value: "~180 h / month", context: "estimate from the averages above, about 30 hours per person" },
+      { label: "Recall@1", value: "93.80%", context: "hybrid retrieval with cross-encoder reranking, 871 queries" },
+      { label: "TF-IDF baseline", value: "54.76%", context: "Recall@1 on the same 871 queries" },
     ],
-    stack: ["Python", "FastAPI", "PostgreSQL", "RAG", "LLM structured outputs", "AWS", "Linux"],
+    stack: ["Python", "Sentence-Transformers", "MiniLM", "FAISS", "TF-IDF", "Reciprocal rank fusion", "Cross-encoders", "Flan-T5", "scikit-learn"],
   },
 ];
 

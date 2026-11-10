@@ -1,18 +1,18 @@
 import type { LucideIcon } from "lucide-react";
-import { Bot, FlaskConical, Search, Server } from "lucide-react";
+import { Bot, FlaskConical, Server, Users } from "lucide-react";
 
 /* All site copy lives here. Every claim is checked against the verified
    profile; keep metric context when editing. */
 
 export const profile = {
   name: "Muzzamil Rasully",
-  role: "AI Engineer · Backend & Full Stack · London",
+  role: "AI Engineer · Full Stack · London",
   location: "London",
-  headline: ["I build the backend", "behind AI products."] as [string, string],
+  headline: ["I work with customers", "to get AI into production."] as [string, string],
   intro:
-    "I'm an AI engineer in London. At Sola I build document-processing systems for clients. Before that I spent a year at Ginseng shipping LLM features and evaluation suites, and worked in a team of three on an internal assistant used by about 200 staff. I work mostly in Python and FastAPI, with React when a project needs a front end.",
+    "I'm an AI engineer in London. At Sola I build and deploy LLM systems for client teams, most recently a document-processing app that cut handling time from 15 to 6 minutes per document. Before that I spent a year at Ginseng running stakeholder discovery, shipping LLM features and evaluation suites, and working in a team of three on an internal assistant for about 200 staff.",
   about:
-    "Most of my work sits between a model and the people using it. I design the API, decide what gets retrieved, validate what comes back, and write the tests that stop a bad prompt change from reaching staging. I have a BSc in Mathematics from Queen Mary University of London.",
+    "Most of my work sits between a model and the people using it. I talk to the team that will use the system, design the API, decide what gets retrieved, validate what comes back and write the tests that stop a bad prompt change from reaching staging. I have a BSc in Mathematics from Queen Mary University of London.",
   cvHref: undefined as string | undefined,
 };
 
@@ -43,9 +43,9 @@ export const aboutTiles: Tile[] = [
     icon: Bot,
   },
   {
-    title: "Retrieval",
-    body: "Hybrid search over contracts and documents, with answers that cite the clause they came from.",
-    icon: Search,
+    title: "Working with clients",
+    body: "Discovery with the people who will use the system, plain-language write-ups of trade-offs, and saying so when AI isn't the right fix.",
+    icon: Users,
   },
   {
     title: "Evaluation & CI",
@@ -90,7 +90,7 @@ export type Project = {
   result: string;
   tech: string[];
   github?: string;
-  badge?: "Private repo" | "Client work";
+  badge?: "Private repo" | "Client work" | "Coursework";
 };
 
 export const featuredProjects: Project[] = [
@@ -113,13 +113,14 @@ export const featuredProjects: Project[] = [
     github: "https://github.com/Muzzamil-Codes-dev/Bug-Triage",
   },
   {
-    slug: "sola-document-processing",
-    title: "Document processing at Sola",
+    slug: "nq-retrieval-rag",
+    title: "Retrieval & RAG on Natural Questions",
     summary:
-      "A FastAPI service that pulls structured data out of documents for a six-person operations team handling 1,200 documents a month.",
-    result: "15 → 6 min per document",
-    tech: ["Python", "FastAPI", "PostgreSQL", "RAG", "AWS"],
-    badge: "Client work",
+      "A retrieval pipeline built up from a TF-IDF baseline through dense, hybrid and cross-encoder reranking, then wired into a FAISS and Flan-T5 RAG pipeline.",
+    result: "93.8% Recall@1 vs 54.8% TF-IDF",
+    tech: ["Python", "FAISS", "MiniLM", "Cross-encoders", "TF-IDF", "Flan-T5"],
+    github: "https://github.com/Muzzamil-Codes-dev/nlp-retrieval-rag-coursework",
+    badge: "Coursework",
   },
 ];
 
@@ -133,6 +134,7 @@ export const experience: ExperienceItem[] = [
     bullets: [
       "Built and deployed a FastAPI document-processing app with retrieval and schema-validated LLM extraction for a six-person operations team. Average handling time fell from 15 to 6 minutes per document across about 1,200 documents a month.",
       "Moved ingestion onto a background queue so failed jobs retry without blocking users, and sent outputs that fail validation to human review.",
+      "Work in a small cross-functional team with little supervision, and flag when AI isn't the right fix for a problem.",
       "Building agent systems in LangGraph and LangChain, with a supervisor agent checking specialist output against a schema before release.",
     ],
   },
@@ -143,6 +145,7 @@ export const experience: ExperienceItem[] = [
     bullets: [
       "Built and deployed an LLM agent for lead enquiries, scheduling and admin. It automates about 70% of routine tasks and cut response times from 2–3 hours to under 10 minutes.",
       "Tuned prompts and guardrails across 100+ live conversations with A/B tests, cutting manual intervention by a further 60% or so.",
+      "Ran discovery with students and parents and tracked engagement from first response to retention, using it to decide what to improve next.",
       "Grew the tutoring agency to 25+ students and teach maths, science and computer science in small groups.",
     ],
   },
@@ -151,10 +154,18 @@ export const experience: ExperienceItem[] = [
     company: "Ginseng",
     dates: "Aug 2025 – Aug 2026",
     bullets: [
-      "Built a 300-case evaluation suite for classification, extraction and summarisation. It blocked 14 critical regressions from reaching staging, 5 of them hallucinations, and production incidents fell by 40%.",
-      "Ran unit, schema and agent-evaluation tests in GitHub Actions, with gates that stopped a release when schema validity or classification checks failed.",
+      "Built a 300-case evaluation suite for classification, extraction and summarisation. It blocked 14 critical regressions from reaching staging, 5 of them hallucinations, and production incidents fell by 40%. GitHub Actions gates blocked releases that failed schema or classification checks.",
       "Worked in a team of three on Action Sync, an internal assistant used by about 200 staff. It creates Jira tickets over MCP, joins meetings to take notes and summarises uploaded documents.",
-      "Built RAG and data pipelines over 100,000+ records on AWS, cutting manual processing time by 30%.",
+      "Ran stakeholder discovery with clients and wrote up system behaviour, limitations and trade-offs in plain language.",
+      "Presented a reusable metric and data-definition standard to directors across six client portfolios, and all six adopted it. Led the 10-person initiative behind it.",
+    ],
+  },
+  {
+    role: "Sales Manager",
+    company: "Flatpay",
+    dates: "Dec 2025 – Feb 2026",
+    bullets: [
+      "Sold payment technology directly to business owners, learning how each business ran and explaining technical products and commercial trade-offs in plain language.",
     ],
   },
   {

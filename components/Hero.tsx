@@ -9,7 +9,7 @@ export function Hero() {
     <section className="container-page grid gap-12 pb-16 pt-12 md:pt-16 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-16 lg:pb-24">
       <div className="min-w-0">
         <p className="section-label mb-6">{profile.role}</p>
-        <h1 className="display break-words text-[clamp(2.75rem,8.5vw,6.75rem)]">
+        <h1 className="display break-words text-[clamp(2.5rem,7vw,6rem)]">
           <span className="block">{first}</span>
           <span className="block text-accent">{second}</span>
         </h1>

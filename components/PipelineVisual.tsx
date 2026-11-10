@@ -28,8 +28,8 @@ export function PipelineVisual() {
   const reduce = useReducedMotion();
 
   return (
-    <figure className="relative overflow-hidden rounded-2xl bg-accent p-5 text-white sm:p-8">
-      <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-white/80">
+    <figure className="relative overflow-hidden rounded-2xl bg-[#BF1F17] p-5 text-white sm:p-8">
+      <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-white/90">
         <span>contract-rag / request path</span>
         <span aria-hidden className="hidden sm:inline">01 → 05</span>
       </div>
@@ -86,7 +86,7 @@ export function PipelineVisual() {
           </motion.g>
         ))}
       </svg>
-      <figcaption className="mt-4 font-mono text-[11px] text-white/80">
+      <figcaption className="mt-4 font-mono text-[11px] text-white/90">
         A failed validation gets one retry before the service abstains.
       </figcaption>
     </figure>
