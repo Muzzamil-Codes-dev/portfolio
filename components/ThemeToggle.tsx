@@ -18,7 +18,7 @@ export function ThemeToggle() {
       type="button"
       aria-label="Toggle dark mode"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="grid h-9 w-9 place-items-center rounded-full border border-line/15 text-ink transition hover:border-accent hover:text-accent dark:border-line/[0.14]"
+      className="pop grid h-9 w-9 place-items-center rounded-full border border-line/15 text-ink transition hover:border-accent hover:text-accent dark:border-line/[0.14]"
     >
       {mounted ? (
         isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />

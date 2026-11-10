@@ -56,9 +56,9 @@ export function Stack() {
                     return (
                       <li
                         key={name}
-                        className="inline-flex items-center gap-2 rounded-lg border border-line/15 bg-surface px-3 py-2 text-sm dark:border-line/[0.14]"
+                        className="pop-sm group inline-flex cursor-default items-center gap-2 rounded-lg border border-line/15 bg-surface px-3 py-2 text-sm dark:border-line/[0.14]"
                       >
-                        {Icon ? <Icon className="h-4 w-4 text-muted" aria-hidden /> : null}
+                        {Icon ? <Icon className="h-4 w-4 text-muted transition-colors group-hover:text-accent" aria-hidden /> : null}
                         {name}
                       </li>
                     );
