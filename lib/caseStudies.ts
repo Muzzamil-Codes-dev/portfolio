@@ -26,7 +26,7 @@ const studies: CaseStudy[] = [
       "Supplier, maintenance and service agreements hide the answers people need (notice periods, renewal terms, liability caps) in dense clauses. A wrong answer costs more than no answer, so the system has to quote its evidence and refuse when the evidence isn't there. I built it over 25 real contracts from the CUAD dataset.",
     architecture: [
       "Ingestion runs offline: PyMuPDF extracts text, headers and footers are stripped, and a clause tree is built from the numbering so every clause has a stable ID such as C019:9.1.",
-      "Routing comes from the request, not a model. One contract ID means a single-contract question, two means a comparison, none means a portfolio question.",
+      "Routing is deterministic and based on the number of contract IDs. One ID means a single-contract question, two means a comparison, none means a portfolio question.",
       "Retrieval fuses dense search (bge-base-en-v1.5 on an exact FAISS index) with BM25, using a tokeniser that keeps values like 14.2, £500,000 and thirty (30) intact.",
       "Generation uses a strict JSON schema whose citation field is an enum of the retrieved clause IDs, so the model can't cite a clause it wasn't shown.",
       "Deterministic checks then confirm that every claim is cited, every quote appears verbatim in its clause and every number in the answer appears in a quote. A failure gets one retry with the list of problems, then the service abstains and returns the three closest clauses.",
@@ -87,7 +87,7 @@ const studies: CaseStudy[] = [
       { label: "Severity accuracy", value: "88%", context: "25 labelled cases, private version; not a large benchmark" },
       { label: "Repeat triage", value: "13 s → 0.5 s", context: "with the LLM-response cache" },
     ],
-    stack: ["Python", "LangGraph", "FastAPI", "Pydantic", "SQLite", "React", "Vite", "pytest", "uv", "Claude API", "E2B", "OpenTelemetry", "Docker"],
+    stack: ["Python", "LangGraph", "FastAPI", "Pydantic", "SQLite", "React", "Vite", "pytest", "uv", "OpenAI API", "Claude API (private)", "E2B (private)", "OpenTelemetry (private)", "Docker (private)"],
   },
   {
     slug: "sola-document-processing",

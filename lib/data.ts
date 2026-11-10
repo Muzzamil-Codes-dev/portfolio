@@ -10,7 +10,7 @@ export const profile = {
   location: "London",
   headline: ["I build the backend", "behind AI products."] as [string, string],
   intro:
-    "I'm an AI engineer in London. At Sola I build document-processing systems for clients. Before that I spent a year at Ginseng shipping LLM features, evaluation suites and an internal assistant used by about 200 staff. I work mostly in Python and FastAPI, with React when a project needs a front end.",
+    "I'm an AI engineer in London. At Sola I build document-processing systems for clients. Before that I spent a year at Ginseng shipping LLM features and evaluation suites, and worked in a team of three on an internal assistant used by about 200 staff. I work mostly in Python and FastAPI, with React when a project needs a front end.",
   about:
     "Most of my work sits between a model and the people using it. I design the API, decide what gets retrieved, validate what comes back, and write the tests that stop a bad prompt change from reaching staging. I have a BSc in Mathematics from Queen Mary University of London.",
   cvHref: undefined as string | undefined,
@@ -49,7 +49,7 @@ export const aboutTiles: Tile[] = [
   },
   {
     title: "Evaluation & CI",
-    body: "Regression suites in GitHub Actions that block a release when outputs break schema or start to hallucinate.",
+    body: "Regression suites in GitHub Actions that block a release when schema validity, classification or critical-regression checks fail.",
     icon: FlaskConical,
   },
 ];
@@ -60,7 +60,7 @@ export const capabilities: Capability[] = [
   {
     n: "01",
     title: "Backend & APIs",
-    body: "Typed APIs, queues, databases and deployment, built to keep running after the demo.",
+    body: "Typed APIs, queues, databases and deployment, with retries, validation and monitoring.",
     tools: ["Python", "FastAPI", "Pydantic", "PostgreSQL", "Docker", "AWS"],
   },
   {
@@ -133,7 +133,7 @@ export const experience: ExperienceItem[] = [
     bullets: [
       "Built and deployed a FastAPI document-processing app with retrieval and schema-validated LLM extraction for a six-person operations team. Average handling time fell from 15 to 6 minutes per document across about 1,200 documents a month.",
       "Moved ingestion onto a background queue so failed jobs retry without blocking users, and sent outputs that fail validation to human review.",
-      "Build agent systems in LangGraph and LangChain, with a supervisor agent checking specialist output against a schema before release.",
+      "Building agent systems in LangGraph and LangChain, with a supervisor agent checking specialist output against a schema before release.",
     ],
   },
   {

@@ -67,7 +67,7 @@ export function PipelineVisual() {
               height={H}
               rx={10}
               className={n.tone === "accent" ? "fill-ink" : "fill-bg"}
-              fillOpacity={n.tone === "muted" ? 0.75 : 1}
+              fillOpacity={1}
             />
             <text
               x={n.x + 14}

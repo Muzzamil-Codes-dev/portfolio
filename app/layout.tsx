@@ -23,7 +23,7 @@ const mono = JetBrains_Mono({
 });
 
 const description =
-  "Muzzamil Rasully is an AI engineer in London. He builds the backends behind LLM products: APIs, agents, retrieval and the tests that keep them honest.";
+  "Muzzamil Rasully is an AI engineer in London. He builds the backends behind LLM products: APIs, agents, retrieval and the evaluation tests that check them.";
 
 export const metadata: Metadata = {
   title: "Muzzamil Rasully — AI Engineer",
