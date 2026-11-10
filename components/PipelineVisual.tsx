@@ -31,7 +31,7 @@ export function PipelineVisual() {
     <figure className="relative overflow-hidden rounded-2xl bg-accent p-5 text-white sm:p-8">
       <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-white/80">
         <span>contract-rag / request path</span>
-        <span aria-hidden>01 → 05</span>
+        <span aria-hidden className="hidden sm:inline">01 → 05</span>
       </div>
       <svg
         viewBox="0 0 400 456"
