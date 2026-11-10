@@ -16,14 +16,14 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      aria-label="Toggle day / night mode"
+      aria-label="Toggle dark mode"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="grid h-10 w-10 place-items-center rounded-full border border-line bg-surface text-fg transition-all duration-300 hover:border-accent hover:text-accent"
+      className="grid h-9 w-9 place-items-center rounded-full border border-line/15 text-ink transition hover:border-accent hover:text-accent dark:border-line/[0.14]"
     >
       {mounted ? (
-        isDark ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />
+        isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />
       ) : (
-        <span className="h-[18px] w-[18px]" />
+        <span className="h-4 w-4" />
       )}
     </button>
   );

@@ -1,10 +1,10 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { QuickScan } from "@/components/QuickScan";
-import { FeaturedProjects } from "@/components/FeaturedProjects";
-import { MoreProjects } from "@/components/MoreProjects";
-import { Skills } from "@/components/Skills";
+import { About } from "@/components/About";
+import { Capabilities } from "@/components/Capabilities";
+import { FeaturedWork } from "@/components/FeaturedWork";
 import { Experience } from "@/components/Experience";
+import { Stack } from "@/components/Stack";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -14,11 +14,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <QuickScan />
-        <FeaturedProjects />
-        <Skills />
-        <MoreProjects />
+        <About />
+        <Capabilities />
+        <FeaturedWork />
         <Experience />
+        <Stack />
         <Contact />
       </main>
       <Footer />

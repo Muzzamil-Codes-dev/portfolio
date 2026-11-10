@@ -1,38 +1,22 @@
 import { Github, Linkedin, Mail } from "lucide-react";
-import { socials } from "@/lib/data";
+import { profile, socials } from "@/lib/data";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line">
-      <div className="container-x flex flex-col items-center justify-between gap-4 py-8 sm:flex-row">
-        <p className="text-sm text-muted">
-          © 2026 Muzzamil Rasully. Built with Next.js, TypeScript and Tailwind CSS.
+    <footer className="border-t border-line/15 dark:border-line/[0.14]">
+      <div className="container-page flex flex-col items-start justify-between gap-4 py-8 sm:flex-row sm:items-center">
+        <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+          © {new Date().getFullYear()} {profile.name}
         </p>
-        <div className="flex items-center gap-2">
-          <a
-            href={`mailto:${socials.email}`}
-            aria-label="Email"
-            className="grid h-9 w-9 place-items-center rounded-full border border-line bg-surface text-muted transition-colors hover:border-accent hover:text-accent"
-          >
-            <Mail className="h-4 w-4" />
+        <div className="flex items-center gap-4 text-muted">
+          <a href={socials.github} aria-label="GitHub" className="transition hover:text-accent">
+            <Github className="h-4 w-4" />
           </a>
-          <a
-            href={socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="grid h-9 w-9 place-items-center rounded-full border border-line bg-surface text-muted transition-colors hover:border-accent hover:text-accent"
-          >
+          <a href={socials.linkedin} aria-label="LinkedIn" className="transition hover:text-accent">
             <Linkedin className="h-4 w-4" />
           </a>
-          <a
-            href={socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="grid h-9 w-9 place-items-center rounded-full border border-line bg-surface text-muted transition-colors hover:border-accent hover:text-accent"
-          >
-            <Github className="h-4 w-4" />
+          <a href={`mailto:${socials.email}`} aria-label="Email" className="transition hover:text-accent">
+            <Mail className="h-4 w-4" />
           </a>
         </div>
       </div>

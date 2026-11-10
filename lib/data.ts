@@ -1,341 +1,207 @@
 import type { LucideIcon } from "lucide-react";
-import {
-  Atom,
-  BarChart3,
-  BrainCircuit,
-  CandlestickChart,
-  Clapperboard,
-  Home,
-  Layers,
-  LineChart,
-  Search,
-  ShieldCheck,
-  Users,
-} from "lucide-react";
+import { Bot, FlaskConical, Search, Server } from "lucide-react";
 
-/* ------------------------------------------------------------------ */
-/* Navigation + socials                                                */
-/* ------------------------------------------------------------------ */
+/* All site copy lives here. Every claim is checked against the verified
+   profile; keep metric context when editing. */
+
+export const profile = {
+  name: "Muzzamil Rasully",
+  role: "AI Engineer · Backend & Full Stack · London",
+  location: "London",
+  headline: ["I build the backend", "behind AI products."] as [string, string],
+  intro:
+    "I'm an AI engineer in London. At Sola I build document-processing systems for clients. Before that I spent a year at Ginseng shipping LLM features, evaluation suites and an internal assistant used by about 200 staff. I work mostly in Python and FastAPI, with React when a project needs a front end.",
+  about:
+    "Most of my work sits between a model and the people using it. I design the API, decide what gets retrieved, validate what comes back, and write the tests that stop a bad prompt change from reaching staging. I have a BSc in Mathematics from Queen Mary University of London.",
+  cvHref: undefined as string | undefined,
+};
+
+export const socials = {
+  email: "Muzzamil755@gmail.com",
+  github: "https://github.com/Muzzamil-Codes-dev",
+  linkedin: "https://www.linkedin.com/in/muzzamil-rasully-0989191a0/",
+};
 
 export const navLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
+  { label: "Work", href: "#work" },
   { label: "Experience", href: "#experience" },
+  { label: "Stack", href: "#stack" },
   { label: "Contact", href: "#contact" },
 ] as const;
 
-export const socials = {
-  // Shown publicly to recruiters; the Contact button + tiles + footer all use a
-  // mailto: link so a click opens the visitor's default mail app (Outlook,
-  // Gmail-as-handler, Apple Mail, etc.).
-  email: "Muzzamil755@gmail.com",
-  github: "https://github.com/Muzzamil-Codes-dev",
-  linkedin: "https://www.linkedin.com/in/muzzamil-rasully-0989191a0",
-};
+export type Tile = { title: string; body: string; icon: LucideIcon };
 
-/* ------------------------------------------------------------------ */
-/* Hero                                                                */
-/* ------------------------------------------------------------------ */
-
-// Used by the hero focus card ("currently focused on").
-export const focusAreas = [
-  "Applied ML",
-  "Retrieval systems (RAG)",
-  "Model evaluation",
-  "MLOps & deployment",
-  "Data analytics",
-] as const;
-
-// Headline metrics for the hero card — each tied to real, defensible work.
-export const mlStats = [
-  { value: "10+", label: "ML / DL models trained" },
-  { value: "3", label: "end-to-end AI systems" },
-  { value: "0.82", label: "ROC-AUC · churn classifier" },
-] as const;
-
-export const openToRoles =
-  "Open to ML Engineer, AI Engineer, NLP Engineer, RAG/LLM Engineer and ML-focused Data Scientist roles.";
-
-/* ------------------------------------------------------------------ */
-/* Recruiter snapshot                                                  */
-/* ------------------------------------------------------------------ */
-
-export const quickScan = {
-  openTo: [
-    "ML Engineer",
-    "AI Engineer",
-    "NLP Engineer",
-    "ML-focused Data Scientist",
-  ],
-  bestProof: [
-    "NLP Retrieval & RAG",
-    "FinBERT stock ML pipeline",
-    "0.82 ROC-AUC churn model",
-    "CNN from scratch",
-  ],
-  coreStack: [
-    "Python",
-    "PyTorch",
-    "scikit-learn",
-    "Transformers",
-    "LangChain",
-    "FAISS",
-    "FastAPI",
-    "Docker",
-    "SQL",
-  ],
-} as const;
-
-/* ------------------------------------------------------------------ */
-/* Tech stack strip                                                    */
-/* ------------------------------------------------------------------ */
-
-export const techStrip = [
-  "Python",
-  "PyTorch",
-  "TensorFlow",
-  "Hugging Face",
-  "scikit-learn",
-  "LangChain",
-  "RAG",
-  "FastAPI",
-  "Docker",
-  "MLflow",
-  "SQL",
-  "Git",
-] as const;
-
-/* ------------------------------------------------------------------ */
-/* About cards                                                         */
-/* ------------------------------------------------------------------ */
-
-export type AboutCard = { title: string; body: string; icon: LucideIcon };
-
-export const aboutCards: AboutCard[] = [
+export const aboutTiles: Tile[] = [
   {
-    title: "Applied modelling",
-    body: "Designing, training, and evaluating models — from gradient boosting to neural networks — with a focus on what's robust and honest.",
-    icon: BrainCircuit,
+    title: "LLM backends",
+    body: "FastAPI services with PostgreSQL, background queues and retries, deployed on AWS.",
+    icon: Server,
   },
   {
-    title: "Retrieval & language tools",
-    body: "Search and question-answering systems that return grounded, explainable answers over real documents.",
-    icon: Layers,
+    title: "Agents",
+    body: "LangGraph pipelines with supervisor checks and human approval before anything is final.",
+    icon: Bot,
   },
   {
-    title: "Data & insight",
-    body: "A strong analytics foundation in Python, SQL, and BI, so results answer the right questions and reach stakeholders.",
-    icon: BarChart3,
+    title: "Retrieval",
+    body: "Hybrid search over contracts and documents, with answers that cite the clause they came from.",
+    icon: Search,
+  },
+  {
+    title: "Evaluation & CI",
+    body: "Regression suites in GitHub Actions that block a release when outputs break schema or start to hallucinate.",
+    icon: FlaskConical,
   },
 ];
 
-/* ------------------------------------------------------------------ */
-/* Experience timeline                                                 */
-/* ------------------------------------------------------------------ */
+export type Capability = { n: string; title: string; body: string; tools: string[] };
 
-export type ExperienceItem = {
-  role: string;
-  company: string;
-  dates: string;
-  bullets: string[];
-};
-
-export const experience: ExperienceItem[] = [
+export const capabilities: Capability[] = [
   {
-    role: "Data Scientist",
-    company: "Ginseng",
-    dates: "Aug 2024 – Aug 2025",
-    bullets: [
-      "Engineered Python ML workflows using scikit-learn, XGBoost and LightGBM across 100,000+ record datasets, delivering classification, regression and clustering outputs across 6+ concurrent client workstreams.",
-      "Reduced analytical turnaround time by 30% by integrating LLM APIs and LangChain-assisted document processing, increasing the volume of recurring client deliverables without additional headcount.",
-      "Converted exploratory analysis into model evaluation reports using precision, recall, F1 and AUC, giving senior stakeholders clearer evidence for operational and strategic decisions.",
-      "Led a 10-person cross-functional data standardisation initiative, creating a unified reporting framework adopted across client portfolios.",
-    ],
+    n: "01",
+    title: "Backend & APIs",
+    body: "Typed APIs, queues, databases and deployment, built to keep running after the demo.",
+    tools: ["Python", "FastAPI", "Pydantic", "PostgreSQL", "Docker", "AWS"],
   },
   {
-    role: "Finance Intern",
-    company: "Xceedure Business Solutions",
-    dates: "Jun 2024 – Aug 2024",
-    bullets: [
-      "Improved financial reporting accuracy by 15–20% by validating, cleansing and reconciling 30,000+ records across Excel and SQL datasets, strengthening finance data integrity before reports were issued to senior stakeholders.",
-      "Reduced weekly reporting preparation time from several hours to under 10 minutes by developing automated Power BI dashboards and structured Excel reporting templates for financial and operational KPI tracking.",
-      "Automated a recurring monthly finance reporting process using VBA macros, saving approximately 3 hours per cycle while reducing manual input errors and improving consistency across reporting outputs.",
-      "Strengthened spreadsheet controls using pivot tables, XLOOKUP/VLOOKUP, SUMIFS, IF statements, data validation and formula checks, improving the traceability and auditability of financial analysis.",
-    ],
+    n: "02",
+    title: "Agentic systems",
+    body: "Multi-step agents that plan, call tools and check each other's output, with a person in the loop where mistakes are costly.",
+    tools: ["LangGraph", "LangChain", "LangSmith", "MCP", "Claude API", "Grok"],
+  },
+  {
+    n: "03",
+    title: "RAG & retrieval",
+    body: "Chunking, embeddings, hybrid search and reranking, measured with recall and citation precision.",
+    tools: ["FAISS", "BM25", "Embeddings", "Cross-encoders", "SQL"],
+  },
+  {
+    n: "04",
+    title: "Front end",
+    body: "React and TypeScript interfaces for the systems above, including this site.",
+    tools: ["React", "TypeScript", "Next.js", "Tailwind", "Vite"],
   },
 ];
-
-/* ------------------------------------------------------------------ */
-/* Projects — featured (top proof) + more (supporting)                 */
-/* ------------------------------------------------------------------ */
-
-export type Highlight = { label?: string; text: string };
 
 export type Project = {
   slug: string;
   title: string;
   summary: string;
-  highlights: Highlight[];
+  result: string;
   tech: string[];
-  icon: LucideIcon;
   github?: string;
-  demo?: string;
-  caseStudy?: boolean;
-  /** Repo isn't public — show "Repo available on request", never a negative badge. */
-  privateRepo?: boolean;
+  badge?: "Private repo" | "Client work";
 };
 
 export const featuredProjects: Project[] = [
   {
-    slug: "nlp-retrieval-rag",
-    title: "NLP Retrieval & RAG",
+    slug: "contract-rag",
+    title: "Contract Intelligence RAG",
     summary:
-      "Builds a question-answering system over documents using retrieval, re-ranking and generated answers.",
-    highlights: [
-      { label: "Built", text: "TF-IDF, dense and hybrid retrieval baselines" },
-      { label: "Added", text: "FAISS search, cross-encoder re-ranking and Flan-T5 answer generation" },
-      { label: "Proof", text: "GitHub and case study" },
-    ],
-    tech: ["Python", "FAISS", "Transformers", "Flan-T5", "NLP", "RAG"],
-    icon: Search,
-    github: "https://github.com/Muzzamil-Codes-dev/nlp-retrieval-rag-coursework",
-    caseStudy: true,
+      "Ask a question about a commercial contract and get an answer that quotes the exact clause, or \"insufficient evidence\" when the contract doesn't say.",
+    result: "88.2% correct on 5 held-out contracts",
+    tech: ["Python", "FastAPI", "LangGraph", "FAISS", "BM25", "SQL"],
+    badge: "Private repo",
   },
   {
-    slug: "finsight-ai",
-    title: "FinSight AI",
+    slug: "bug-triage",
+    title: "Agentic Bug Triage",
     summary:
-      "Tests whether short-term stock movement can be predicted using market data, sentiment and document context.",
-    highlights: [
-      { label: "Built", text: "leakage-safe financial ML pipeline with technical indicators and FinBERT sentiment" },
-      { label: "Finding", text: "short-horizon prediction was only slightly above baseline, showing honest evaluation" },
-      { label: "Proof", text: "reproducible pipeline, dashboard, Docker and case study" },
-    ],
-    tech: ["Python", "PyTorch", "FinBERT", "Transformers", "RAG", "scikit-learn"],
-    icon: LineChart,
-    caseStudy: true,
-    privateRepo: true,
+      "A LangGraph pipeline that turns a messy bug report into a structured triage, reviews its own work and waits for a person to approve it.",
+    result: "36 tests · 99% backend coverage",
+    tech: ["Python", "LangGraph", "FastAPI", "Pydantic", "React", "SQLite"],
+    github: "https://github.com/Muzzamil-Codes-dev/Bug-Triage",
   },
   {
-    slug: "telco-churn",
-    title: "Telco Churn Predictor",
+    slug: "sola-document-processing",
+    title: "Document processing at Sola",
     summary:
-      "Predicts customer churn and explains the drivers behind each prediction.",
-    highlights: [
-      { label: "Built", text: "two-stage ML pipeline with GBM risk scoring and XGBoost classification" },
-      { label: "Result", text: "0.82 ROC-AUC on the IBM Telco dataset" },
-      { label: "Explainability", text: "SHAP used to surface churn drivers" },
-    ],
-    tech: ["Python", "XGBoost", "scikit-learn", "pandas", "SHAP"],
-    icon: Users,
-    github: "https://github.com/Muzzamil-Codes-dev/telco-churn-predictor",
-    caseStudy: true,
+      "A FastAPI service that pulls structured data out of documents for a six-person operations team handling 1,200 documents a month.",
+    result: "15 → 6 min per document",
+    tech: ["Python", "FastAPI", "PostgreSQL", "RAG", "AWS"],
+    badge: "Client work",
   },
 ];
 
-export const moreProjects: Project[] = [
+export type ExperienceItem = { role: string; company: string; dates: string; bullets: string[] };
+
+export const experience: ExperienceItem[] = [
   {
-    slug: "streammind-ai",
-    title: "StreamMind AI",
-    summary:
-      "GenAI search and recommendation platform for a streaming catalogue.",
-    highlights: [
-      { label: "Built", text: "hybrid BM25 + semantic retrieval and a grounded RAG chatbot" },
-      { label: "Added", text: "neural re-ranking and a feedback-loop experiment" },
+    role: "AI Consultant",
+    company: "Sola",
+    dates: "Aug 2026 – Present",
+    bullets: [
+      "Built and deployed a FastAPI document-processing app with retrieval and schema-validated LLM extraction for a six-person operations team. Average handling time fell from 15 to 6 minutes per document across about 1,200 documents a month.",
+      "Moved ingestion onto a background queue so failed jobs retry without blocking users, and sent outputs that fail validation to human review.",
+      "Build agent systems in LangGraph and LangChain, with a supervisor agent checking specialist output against a schema before release.",
     ],
-    tech: ["Python", "PyTorch", "RAG", "FastAPI", "Docker", "MLflow"],
-    icon: Clapperboard,
-    caseStudy: true,
-    privateRepo: true,
   },
   {
-    slug: "cnn-from-scratch",
-    title: "CNN From Scratch",
-    summary: "A convolutional neural network implemented in pure NumPy.",
-    highlights: [
-      { label: "Built", text: "hand-coded forward and backward passes — no frameworks" },
-      { label: "Covers", text: "conv, pooling and dense layers for image classification" },
+    role: "Founder",
+    company: "Sharpmind",
+    dates: "Jul 2026 – Present",
+    bullets: [
+      "Built and deployed an LLM agent for lead enquiries, scheduling and admin. It automates about 70% of routine tasks and cut response times from 2–3 hours to under 10 minutes.",
+      "Tuned prompts and guardrails across 100+ live conversations with A/B tests, cutting manual intervention by a further 60% or so.",
+      "Grew the tutoring agency to 25+ students and teach maths, science and computer science in small groups.",
     ],
-    tech: ["Python", "NumPy", "Computer Vision"],
-    icon: BrainCircuit,
-    github: "https://github.com/Muzzamil-Codes-dev/CNN-From-Scratch",
-    caseStudy: true,
   },
   {
-    slug: "stockscope",
-    title: "StockScope",
-    summary:
-      "Full-stack stock-research platform with analytics-backed, explainable summaries.",
-    highlights: [
-      { label: "Built", text: "live search with earnings, valuation and risk breakdowns" },
-      { label: "Added", text: "volatility-based forecasts and LLM-generated summaries" },
+    role: "AI Engineer",
+    company: "Ginseng",
+    dates: "Aug 2025 – Aug 2026",
+    bullets: [
+      "Built a 300-case evaluation suite for classification, extraction and summarisation. It blocked 14 critical regressions from reaching staging, 5 of them hallucinations, and production incidents fell by 40%.",
+      "Ran unit, schema and agent-evaluation tests in GitHub Actions, with gates that stopped a release when schema validity or classification checks failed.",
+      "Worked in a team of three on Action Sync, an internal assistant used by about 200 staff. It creates Jira tickets over MCP, joins meetings to take notes and summarises uploaded documents.",
+      "Built RAG and data pipelines over 100,000+ records on AWS, cutting manual processing time by 30%.",
     ],
-    tech: ["Next.js", "TypeScript", "Supabase", "LLM", "Recharts"],
-    icon: CandlestickChart,
-    caseStudy: true,
-    privateRepo: true,
   },
   {
-    slug: "house-price",
-    title: "House Price Prediction",
-    summary: "Regression models that estimate property prices and price drivers.",
-    highlights: [
-      { label: "Built", text: "feature engineering and cross-validated model comparison" },
-      { label: "Result", text: "ranked the strongest drivers of valuation" },
+    role: "Data Science Intern",
+    company: "Xceedure Business Solutions",
+    dates: "Mar 2025 – Aug 2025",
+    bullets: [
+      "Cleaned and validated 30,000+ operational records in Python and SQL, reducing reporting inaccuracies by 15%.",
+      "Built scikit-learn, XGBoost and LightGBM models with feature engineering and cross-validation, and reported findings in Power BI.",
     ],
-    tech: ["scikit-learn", "pandas", "Matplotlib", "Python"],
-    icon: Home,
-    github: "https://github.com/Muzzamil-Codes-dev/house-price-prediction",
-    caseStudy: true,
-  },
-  {
-    slug: "credit-risk",
-    title: "Credit Risk Prediction",
-    summary: "Classifies borrower default risk with careful imbalance handling.",
-    highlights: [
-      { label: "Built", text: "feature engineering on applicant and loan data" },
-      { label: "Result", text: "interpretable risk metrics under class imbalance" },
-    ],
-    tech: ["scikit-learn", "pandas", "Python"],
-    icon: ShieldCheck,
-    github: "https://github.com/Muzzamil-Codes-dev/credit-risk-prediction",
-    caseStudy: true,
-  },
-  {
-    slug: "computational-physics",
-    title: "Computational Physics (C++)",
-    summary: "Numerical-methods toolkit in modern C++ with an N-body simulation.",
-    highlights: [
-      { label: "Built", text: "integration, interpolation and root-finding routines" },
-      { label: "Added", text: "RK4 N-body simulation of the TRAPPIST-1 system" },
-    ],
-    tech: ["C++", "Numerical Methods", "Simulation"],
-    icon: Atom,
-    github: "https://github.com/Muzzamil-Codes-dev/computational-physics-cpp",
   },
 ];
 
-/* ------------------------------------------------------------------ */
-/* Skills — four simple, functional groups                             */
-/* ------------------------------------------------------------------ */
+export const education = {
+  degree: "BSc Mathematics, 2:1",
+  school: "Queen Mary University of London",
+  dates: "2022 – 2026",
+};
 
-export type SkillGroup = { title: string; skills: string[] };
+export type StackGroup = "Languages" | "Backend" | "AI" | "Data & Cloud" | "Front end";
 
-export const skillGroups: SkillGroup[] = [
-  {
-    title: "ML / Modelling",
-    skills: ["Python", "PyTorch", "scikit-learn", "XGBoost", "Model evaluation"],
-  },
-  {
-    title: "NLP / RAG",
-    skills: ["Transformers", "LangChain", "FAISS", "Flan-T5", "FinBERT", "Embeddings"],
-  },
-  {
-    title: "Deployment",
-    skills: ["FastAPI", "Streamlit", "Docker", "MLflow", "GitHub"],
-  },
-  {
-    title: "Data foundation",
-    skills: ["SQL", "Pandas", "Power BI", "Excel"],
-  },
+export const stack: { name: string; group: StackGroup }[] = [
+  { name: "Python", group: "Languages" },
+  { name: "TypeScript", group: "Languages" },
+  { name: "SQL", group: "Languages" },
+  { name: "Java", group: "Languages" },
+  { name: "C++", group: "Languages" },
+  { name: "FastAPI", group: "Backend" },
+  { name: "Pydantic", group: "Backend" },
+  { name: "PostgreSQL", group: "Backend" },
+  { name: "SQLite", group: "Backend" },
+  { name: "Docker", group: "Backend" },
+  { name: "GitHub Actions", group: "Backend" },
+  { name: "LangGraph", group: "AI" },
+  { name: "LangChain", group: "AI" },
+  { name: "LangSmith", group: "AI" },
+  { name: "Claude API", group: "AI" },
+  { name: "OpenAI API", group: "AI" },
+  { name: "Grok", group: "AI" },
+  { name: "PyTorch", group: "AI" },
+  { name: "FAISS", group: "AI" },
+  { name: "AWS", group: "Data & Cloud" },
+  { name: "Databricks", group: "Data & Cloud" },
+  { name: "pandas", group: "Data & Cloud" },
+  { name: "scikit-learn", group: "Data & Cloud" },
+  { name: "React", group: "Front end" },
+  { name: "Next.js", group: "Front end" },
+  { name: "Tailwind CSS", group: "Front end" },
+  { name: "Vite", group: "Front end" },
 ];

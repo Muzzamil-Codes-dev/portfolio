@@ -1,40 +1,29 @@
-import { aboutCards } from "@/lib/data";
-import { Reveal } from "./Reveal";
+import { aboutTiles, profile } from "@/lib/data";
+import { Reveal } from "@/components/Reveal";
+import { SectionLabel } from "@/components/SectionLabel";
 
 export function About() {
   return (
-    <section id="about" className="container-x py-14 sm:py-16">
-      <Reveal>
-        <span className="section-label">About</span>
-        <h2 className="section-title max-w-3xl">Applied AI, built beyond notebooks.</h2>
-        <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted">
-          I build applied-ML systems end to end — training and evaluating models,
-          then wrapping them in retrieval pipelines, dashboards, APIs and
-          deployment-ready apps. My background in data analytics, finance and
-          consulting keeps me focused on practical tools that answer real
-          questions and reach the people who need them.
-        </p>
-      </Reveal>
-
-      <div className="mt-9 grid gap-4 sm:grid-cols-3">
-        {aboutCards.map((card, i) => {
-          const Icon = card.icon;
-          return (
-            <Reveal key={card.title} delay={i * 0.08}>
-              <article className="card card-hover h-full p-6">
-                <span className="grid h-11 w-11 place-items-center rounded-xl border border-line bg-bg text-accent">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-display text-lg font-semibold">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {card.body}
-                </p>
-              </article>
-            </Reveal>
-          );
-        })}
+    <section id="about" className="section">
+      <div className="container-page">
+        <SectionLabel>About</SectionLabel>
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <Reveal>
+            <h2 className="display text-[clamp(2.25rem,5vw,3.75rem)]">
+              I work on everything <span className="text-accent">around the model.</span>
+            </h2>
+            <p className="mt-6 max-w-lg leading-relaxed text-muted">{profile.about}</p>
+          </Reveal>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {aboutTiles.map(({ title, body, icon: Icon }, i) => (
+              <Reveal key={title} delay={i * 0.05} className="tile">
+                <Icon className="h-5 w-5 text-accent" aria-hidden />
+                <h3 className="mt-4 font-semibold">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{body}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
