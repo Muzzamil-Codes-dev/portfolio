@@ -101,6 +101,11 @@ body {
     @apply transition duration-200 ease-out hover:-translate-y-0.5 hover:scale-105 hover:border-accent hover:shadow-md hover:shadow-ink/10 motion-reduce:transform-none;
   }
 
+  /* Card lift on hover. Put it on an element that motion does not animate. */
+  .pop-card {
+    @apply relative transition duration-200 ease-out hover:z-10 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-ink/10 motion-reduce:transform-none;
+  }
+
   .chip {
     @apply inline-flex items-center rounded-full border border-line/15 px-2.5 py-1 font-mono text-[11px] text-muted dark:border-line/[0.14];
   }

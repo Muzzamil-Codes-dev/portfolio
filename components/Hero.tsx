@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { ArrowDown, Github, Linkedin } from "lucide-react";
 import { profile, socials } from "@/lib/data";
 import { PipelineVisual } from "@/components/PipelineVisual";
 
@@ -21,7 +21,7 @@ export function Hero() {
           </a>
           {profile.cvHref ? (
             <a href={profile.cvHref} className="btn-ghost" download>
-              Download CV <ArrowUpRight className="h-4 w-4" />
+              Download CV <ArrowDown className="h-4 w-4" />
             </a>
           ) : null}
           <div className="ml-1 flex items-center gap-2">

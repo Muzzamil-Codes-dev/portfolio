@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Menu, X } from "lucide-react";
 import { navLinks, profile, socials } from "@/lib/data";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
@@ -35,6 +35,11 @@ export function Navbar({ base = "" }: { base?: string }) {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
+          {profile.cvHref ? (
+            <a href={profile.cvHref} download className="btn-ghost hidden !py-2 lg:inline-flex">
+              CV <ArrowDown className="h-4 w-4" />
+            </a>
+          ) : null}
           <a href={`mailto:${socials.email}`} className="btn-primary hidden !py-2 sm:inline-flex">
             Get in touch <ArrowUpRight className="h-4 w-4" />
           </a>
@@ -66,6 +71,11 @@ export function Navbar({ base = "" }: { base?: string }) {
             <a href={`mailto:${socials.email}`} className="py-3 font-mono text-sm uppercase tracking-[0.14em] text-accent">
               Get in touch
             </a>
+            {profile.cvHref ? (
+              <a href={profile.cvHref} download className="py-3 font-mono text-sm uppercase tracking-[0.14em]">
+                Download CV
+              </a>
+            ) : null}
           </div>
         </div>
       ) : null}

@@ -1,5 +1,5 @@
-import { ArrowUpRight, Github, Linkedin } from "lucide-react";
-import { socials } from "@/lib/data";
+import { ArrowDown, ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { profile, socials } from "@/lib/data";
 
 export function Contact() {
   return (
@@ -22,6 +22,11 @@ export function Contact() {
             {socials.email} <ArrowUpRight className="h-5 w-5 shrink-0" />
           </a>
           <div className="mt-8 flex flex-wrap gap-3">
+            {profile.cvHref ? (
+              <a href={profile.cvHref} download className="btn-primary">
+                Download CV <ArrowDown className="h-4 w-4" />
+              </a>
+            ) : null}
             <a href={socials.linkedin} className="btn-ghost">
               <Linkedin className="h-4 w-4" /> LinkedIn
             </a>

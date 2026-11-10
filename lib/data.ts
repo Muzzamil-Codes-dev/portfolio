@@ -13,11 +13,11 @@ export const profile = {
     "I'm an AI engineer in London. At Sola I build and deploy LLM systems for client teams, most recently a document-processing app that cut handling time from 15 to 6 minutes per document. Before that I spent a year at Ginseng running stakeholder discovery, shipping LLM features and evaluation suites, and working in a team of three on an internal assistant for about 200 staff.",
   about:
     "Most of my work sits between a model and the people using it. I talk to the team that will use the system, design the API, decide what gets retrieved, validate what comes back and write the tests that stop a bad prompt change from reaching staging. I have a BSc in Mathematics from Queen Mary University of London.",
-  cvHref: undefined as string | undefined,
+  cvHref: "/Muzzamil_Rasully_CV.pdf" as string | undefined,
 };
 
 export const socials = {
-  email: "Muzzamil755@gmail.com",
+  email: "Rasully.m1@gmail.com",
   github: "https://github.com/Muzzamil-Codes-dev",
   linkedin: "https://www.linkedin.com/in/muzzamil-rasully-0989191a0/",
 };

@@ -16,12 +16,14 @@ export function About() {
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2">
             {aboutTiles.map(({ title, body, icon: Icon }, i) => (
-              <Reveal key={title} delay={i * 0.05} className="tile">
+              <Reveal key={title} delay={i * 0.05} className="h-full">
+                <div className="tile pop-card h-full hover:border-accent/40">
                 <span className="pop inline-grid h-10 w-10 place-items-center rounded-full bg-accent/10">
                   <Icon className="h-5 w-5 text-accent" aria-hidden />
                 </span>
                 <h3 className="mt-4 font-semibold">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{body}</p>
+                </div>
               </Reveal>
             ))}
           </div>

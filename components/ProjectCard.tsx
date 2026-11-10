@@ -4,7 +4,7 @@ import type { Project } from "@/lib/data";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line/15 bg-surface dark:border-line/[0.14]">
+    <article className="pop-card group flex h-full flex-col overflow-hidden rounded-xl hover:border-accent/40 border border-line/15 bg-surface dark:border-line/[0.14]">
       <Link
         href={`/projects/${project.slug}`}
         className="relative flex min-h-[200px] flex-col justify-between bg-panel p-6 text-panel-ink"

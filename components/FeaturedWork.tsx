@@ -12,7 +12,7 @@ export function FeaturedWork() {
         </SectionLabel>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((p, i) => (
-            <Reveal key={p.slug} delay={i * 0.06}>
+            <Reveal key={p.slug} delay={i * 0.06} className="h-full">
               <ProjectCard project={p} index={i} />
             </Reveal>
           ))}

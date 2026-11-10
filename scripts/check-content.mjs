@@ -36,7 +36,8 @@ for (const file of sourceFiles) {
 }
 
 const data = readFileSync(join(root, "lib/data.ts"), "utf8");
-if (!data.includes("Muzzamil755@gmail.com")) fail("lib/data.ts: site email missing");
+if (!data.includes("Rasully.m1@gmail.com")) fail("lib/data.ts: site email missing");
+if (data.includes("Muzzamil755")) fail("lib/data.ts: old email still present");
 for (const company of ["Sola", "Ginseng", "Sharpmind", "Xceedure"]) {
   if (!data.includes(company)) fail(`lib/data.ts: missing ${company}`);
 }
@@ -64,6 +65,7 @@ for (const slug of ["contract-rag"]) {
 }
 
 const cv = data.match(/cvHref:\s*"([^"]+)"/);
+if (cv && /AJW/i.test(cv[1])) fail("cvHref must not mention AJW");
 if (cv && !existsSync(join(root, "public", cv[1]))) fail(`cvHref points at missing public${cv[1]}`);
 
 if (failures.length) {
