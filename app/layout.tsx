@@ -45,7 +45,8 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${display.variable} ${sans.variable} ${mono.variable}`}
     >
-      <body className="bg-bg font-sans text-ink antialiased">
+      {/* Browser extensions (e.g. Grammarly) add attributes to <body> before hydration. */}
+      <body className="bg-bg font-sans text-ink antialiased" suppressHydrationWarning>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
