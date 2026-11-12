@@ -18,11 +18,11 @@ export function Navbar({ base = "" }: { base?: string }) {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/15 bg-bg/85 backdrop-blur dark:border-line/[0.14]">
+    <header className="sticky top-0 z-50 border-b border-ink bg-bg/90 backdrop-blur">
       <nav className="container-page flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-1.5 font-mono text-sm font-semibold uppercase tracking-[0.14em]">
           {profile.name}
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+          <span className="h-2 w-2 bg-accent" aria-hidden />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -45,7 +45,7 @@ export function Navbar({ base = "" }: { base?: string }) {
           </a>
           <button
             type="button"
-            className="grid h-9 w-9 place-items-center rounded-full border border-line/15 md:hidden dark:border-line/[0.14]"
+            className="grid h-10 w-10 place-items-center border border-ink md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
@@ -56,7 +56,7 @@ export function Navbar({ base = "" }: { base?: string }) {
       </nav>
 
       {open ? (
-        <div className="border-t border-line/15 md:hidden dark:border-line/[0.14]">
+        <div className="border-t border-ink/15 md:hidden">
           <div className="container-page flex flex-col py-2">
             {navLinks.map((l) => (
               <a

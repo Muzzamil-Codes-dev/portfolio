@@ -4,25 +4,25 @@
 
 /* Colours stored as raw "R G B" channels so Tailwind opacity modifiers work. */
 :root {
-  --bg: 243 238 230; /* #F3EEE6 cream */
-  --surface: 251 248 243; /* #FBF8F3 */
-  --ink: 20 20 20; /* #141414 */
-  --muted: 94 90 84; /* #5E5A54 */
+  --bg: 255 255 255; /* white */
+  --surface: 245 245 245; /* #F5F5F5 */
+  --ink: 10 10 10; /* #0A0A0A */
+  --muted: 82 82 91; /* #52525B */
   --accent: 215 38 30; /* #D7261E signal red */
-  --line: 20 20 20; /* used at /15 */
-  --panel: 20 20 20; /* dark project panels */
-  --panel-ink: 243 238 230;
+  --line: 10 10 10;
+  --panel: 10 10 10; /* dark project panels */
+  --panel-ink: 255 255 255;
 }
 
 .dark {
-  --bg: 18 17 16; /* #121110 */
-  --surface: 27 26 24; /* #1B1A18 */
-  --ink: 241 236 228; /* #F1ECE4 */
-  --muted: 163 158 150; /* #A39E96 */
+  --bg: 10 10 10; /* #0A0A0A */
+  --surface: 23 23 23; /* #171717 */
+  --ink: 245 245 245; /* #F5F5F5 */
+  --muted: 161 161 170; /* #A1A1AA */
   --accent: 239 59 48; /* #EF3B30 */
-  --line: 241 236 228; /* used at /14 */
-  --panel: 32 30 28;
-  --panel-ink: 241 236 228;
+  --line: 245 245 245;
+  --panel: 23 23 23;
+  --panel-ink: 245 245 245;
 }
 
 html {
@@ -50,13 +50,12 @@ section[id] {
 body {
   background-color: rgb(var(--bg));
   color: rgb(var(--ink));
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 :focus-visible {
   outline: 2px solid rgb(var(--accent));
   outline-offset: 3px;
-  border-radius: 6px;
 }
 
 ::selection {
@@ -70,7 +69,7 @@ body {
   }
 
   .section {
-    @apply border-t border-line/15 py-16 md:py-24 dark:border-line/[0.14];
+    @apply py-16 md:py-24;
   }
 
   .section-label {
@@ -85,32 +84,33 @@ body {
     @apply font-display uppercase leading-[0.92] tracking-tight;
   }
 
+  /* Square buttons with a hard offset shadow on hover. */
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110 dark:text-bg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+    @apply inline-flex items-center gap-2 bg-accent px-5 py-3 text-sm font-semibold text-white transition duration-150 ease-out hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_rgb(var(--ink))] motion-reduce:transform-none dark:text-bg;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center gap-2 rounded-full border border-ink/80 px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-ink hover:text-bg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent;
+    @apply inline-flex items-center gap-2 border border-ink px-5 py-3 text-sm font-semibold text-ink transition duration-150 ease-out hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_rgb(var(--accent))] motion-reduce:transform-none;
   }
 
-  /* Hover "pop": lift and scale; disabled by the reduced-motion rule above. */
+  /* Hover "pop": the element shifts up-left and leaves a solid shadow behind. */
   .pop {
-    @apply transition duration-200 ease-out hover:-translate-y-1 hover:scale-110 hover:shadow-lg hover:shadow-ink/10 motion-reduce:transform-none;
+    @apply transition duration-150 ease-out hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0_0_rgb(var(--accent))] motion-reduce:transform-none;
   }
   .pop-sm {
-    @apply transition duration-200 ease-out hover:-translate-y-0.5 hover:scale-105 hover:border-accent hover:shadow-md hover:shadow-ink/10 motion-reduce:transform-none;
+    @apply transition duration-150 ease-out hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-ink hover:shadow-[3px_3px_0_0_rgb(var(--accent))] motion-reduce:transform-none;
   }
 
-  /* Card lift on hover. Put it on an element that motion does not animate. */
+  /* Card pop. Put it on an element that motion does not animate. */
   .pop-card {
-    @apply relative transition duration-200 ease-out hover:z-10 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-ink/10 motion-reduce:transform-none;
+    @apply relative transition duration-150 ease-out hover:z-10 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_0_rgb(var(--accent))] motion-reduce:transform-none;
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-line/15 px-2.5 py-1 font-mono text-[11px] text-muted dark:border-line/[0.14];
+    @apply inline-flex items-center border border-ink/25 px-2 py-1 font-mono text-xs uppercase tracking-[0.08em] text-muted;
   }
 
   .tile {
-    @apply rounded-xl border border-line/15 bg-surface p-5 dark:border-line/[0.14];
+    @apply border border-ink bg-bg p-6;
   }
 }

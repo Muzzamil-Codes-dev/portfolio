@@ -1,13 +1,15 @@
 import type { ReactNode } from "react";
 
-/** Red square + mono label, a hairline rule, and optional right-aligned text. */
+/** Section heading: large display title over a solid rule, with an optional note on the right. */
 export function SectionLabel({ children, right }: { children: ReactNode; right?: ReactNode }) {
   return (
-    <div className="mb-10 flex items-center gap-4">
-      <span className="section-label shrink-0">{children}</span>
-      <span className="h-px flex-1 bg-line/15 dark:bg-line/[0.14]" aria-hidden />
+    <div className="mb-10 flex items-end justify-between gap-6 border-b border-ink pb-4">
+      <h2 className="display text-4xl md:text-5xl">
+        {children}
+        <span className="text-accent">.</span>
+      </h2>
       {right ? (
-        <span className="hidden shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-muted sm:inline">
+        <span className="hidden pb-1 font-mono text-xs uppercase tracking-[0.14em] text-muted sm:inline">
           {right}
         </span>
       ) : null}

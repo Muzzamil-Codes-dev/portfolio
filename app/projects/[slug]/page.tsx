@@ -48,10 +48,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           ) : null}
         </header>
 
-        <dl className="mt-14 grid gap-px overflow-hidden rounded-xl border border-line/15 bg-line/15 sm:grid-cols-2 lg:grid-cols-4 dark:border-line/[0.14] dark:bg-line/[0.14]">
+        <dl className="mt-14 grid gap-px border border-ink bg-ink sm:grid-cols-2 lg:grid-cols-4">
           {study.results.map((r) => (
             <div key={r.label} className="bg-bg p-6">
-              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted">{r.label}</dt>
+              <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">{r.label}</dt>
               <dd className="mt-3 font-display text-4xl text-accent">{r.value}</dd>
               <dd className="mt-2 text-sm text-muted">{r.context}</dd>
             </div>

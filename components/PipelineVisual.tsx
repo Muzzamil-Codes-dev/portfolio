@@ -28,8 +28,8 @@ export function PipelineVisual() {
   const reduce = useReducedMotion();
 
   return (
-    <figure className="relative overflow-hidden rounded-2xl bg-[#BF1F17] p-5 text-white sm:p-8">
-      <div className="mb-4 flex items-center justify-between font-mono text-[11px] uppercase tracking-[0.18em] text-white/90">
+    <figure className="relative border border-ink bg-[#BF1F17] p-5 text-white shadow-[8px_8px_0_0_rgb(var(--ink))] sm:p-8">
+      <div className="mb-4 flex items-center justify-between font-mono text-xs uppercase tracking-[0.18em] text-white/90">
         <span>contract-rag / request path</span>
         <span aria-hidden className="hidden sm:inline">01 → 05</span>
       </div>
@@ -65,7 +65,7 @@ export function PipelineVisual() {
               y={n.y}
               width={n.w}
               height={H}
-              rx={10}
+              rx={0}
               className={n.tone === "accent" ? "fill-ink" : "fill-bg"}
               fillOpacity={1}
             />
@@ -79,14 +79,14 @@ export function PipelineVisual() {
             <text
               x={n.x + 14}
               y={n.y + 40}
-              className={`font-sans text-[11px] ${n.tone === "accent" ? "fill-bg/75" : "fill-muted"}`}
+              className={`font-sans text-xs ${n.tone === "accent" ? "fill-bg/75" : "fill-muted"}`}
             >
               {n.sub}
             </text>
           </motion.g>
         ))}
       </svg>
-      <figcaption className="mt-4 font-mono text-[11px] text-white/90">
+      <figcaption className="mt-4 font-mono text-xs text-white/90">
         A failed validation gets one retry before the service abstains.
       </figcaption>
     </figure>
